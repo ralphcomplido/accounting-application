@@ -1,0 +1,77 @@
+
+<p-card header="All">
+  <div class="flex gap-1 mb-1">
+    <p-button [routerLink]="['create']" severity="success" icon="pi pi-plus" label="Create" />
+  </div>
+
+  <api-response [apiResponse]="searchResults$" errorMessage="Error loading items" loadingMessage="Loading items...">
+    <ng-template #success let-searchResults>
+      <p-panel header="Filters" [formGroup]="form" [toggleable]="true" [collapsed]="true" styleClass="mb-2">
+        <div class="flex flex-wrap gap-2">
+          <div class="w-[16rem]">
+            <label for="accountNumber">AccountNumber</label>
+            <input pInputText id="accountNumber" formControlName="accountNumber" class="w-full" />
+          </div>
+          <div class="w-[16rem]">
+            <label for="accountType">AccountType</label>
+            <input pInputText id="accountType" formControlName="accountType" class="w-full" />
+          </div>
+          <div class="w-[16rem]">
+            <label for="accountName">AccountName</label>
+            <input pInputText id="accountName" formControlName="accountName" class="w-full" />
+          </div>
+          <div class="w-[16rem]">
+            <label for="createdDate">CreatedDate</label>
+            <p-datepicker id="createdDate" formControlName="createdDate" [showTime]="true" [showIcon]="true" />
+          </div>
+          <div class="w-[16rem]">
+            <label for="lastModifiedDate">LastModifiedDate</label>
+            <p-datepicker id="lastModifiedDate" formControlName="lastModifiedDate" [showTime]="true" [showIcon]="true" />
+          </div>
+          <div class="w-[16rem]">
+            <p-button label="Reset" icon="pi pi-refresh" (click)="this.form.reset()" severity="danger" />
+          </div>
+        </div>
+      </p-panel>
+
+      <p-table
+        [value]="searchResults.data"
+        [paginator]="true"
+        [rows]="pageSize"
+        [totalRecords]="searchResults.totalCount"
+        [lazy]="true"
+        (onLazyLoad)="onLazyLoad($event)"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th></th>
+            <th>Id</th>
+            <th>AccountNumber</th>
+            <th>AccountType</th>
+            <th>AccountName</th>
+            <th>CreatedDate</th>
+            <th>LastModifiedDate</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-account>
+          <tr>
+            <td>
+              <p-button [routerLink]="[account.id]" icon="pi pi-eye" />
+            </td>
+            <td>{{account.id}}</td>
+            <td>{{account.accountNumber}}</td>
+            <td>{{account.accountType}}</td>
+            <td>{{account.accountName}}</td>
+            <td>{{account.createdDate | date : 'long'}}</td>
+            <td>{{account.lastModifiedDate | date : 'long'}}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="100%">There are no items.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-template>
+  </api-response>
+</p-card>

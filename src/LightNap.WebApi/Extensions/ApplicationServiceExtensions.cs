@@ -1,4 +1,6 @@
-﻿using LightNap.Core.Data;
+﻿using LightNap.Core.Accounts.Interfaces;
+using LightNap.Core.Accounts.Services;
+using LightNap.Core.Data;
 using LightNap.Core.Data.Entities;
 using LightNap.Core.Email.Interfaces;
 using LightNap.Core.Email.Services;
@@ -52,6 +54,7 @@ namespace LightNap.WebApi.Extensions
             services.AddScoped<IPublicService, PublicService>();
             services.AddScoped<IClaimsService, ClaimsService>();
             services.AddScoped<IRolesService, RolesService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

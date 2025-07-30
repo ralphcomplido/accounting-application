@@ -1,0 +1,34 @@
+
+<p-card header="Create">
+  <div class="flex gap-1 mb-1">
+    <p-button [routerLink]="['..']" icon="pi pi-arrow-up" label="See all" />
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="createClicked()" autocomplete="off">
+    <div class="w-[30rem] flex flex-col gap-5">
+      <div class="flex flex-col gap-2">
+        <label for="accountNumber" class="text-xl">AccountNumber</label>
+        <input pInputText id="accountNumber" formControlName="accountNumber" class="w-full" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="accountType" class="text-xl">AccountType</label>
+        <input pInputText id="accountType" formControlName="accountType" class="w-full" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="accountName" class="text-xl">AccountName</label>
+        <input pInputText id="accountName" formControlName="accountName" class="w-full" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="createdDate" class="text-xl">CreatedDate</label>
+        <p-datepicker id="createdDate" formControlName="createdDate" [showTime]="true" [showIcon]="true" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="lastModifiedDate" class="text-xl">LastModifiedDate</label>
+        <p-datepicker id="lastModifiedDate" formControlName="lastModifiedDate" [showTime]="true" [showIcon]="true" />
+      </div>
+
+      <error-list [errors]="errors" />
+      <p-button type="submit" label="Create" icon="pi pi-save" severity="success" [disabled]="!form.valid" />
+    </div>
+  </form>
+</p-card>

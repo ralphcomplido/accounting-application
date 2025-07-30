@@ -1,0 +1,40 @@
+
+<p-card header="Get">
+  <api-response [apiResponse]="account$" errorMessage="Error loading" loadingMessage="Loading...">
+    <ng-template #success let-account>
+      <div class="flex gap-1 mb-1">
+        <p-button [routerLink]="['..']" icon="pi pi-arrow-up" label="See all" />
+        <p-button [routerLink]="['..', id(), 'edit']" icon="pi pi-pencil" label="Edit" />
+      </div>
+      <div class="w-[30rem] flex flex-col gap-5">
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">Id</label>
+          <div>{{ account.id }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">AccountNumber</label>
+          <div>{{ account.accountNumber }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">AccountType</label>
+          <div>{{ account.accountType }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">AccountName</label>
+          <div>{{ account.accountName }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">CreatedDate</label>
+          <div>{{ account.createdDate }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold">LastModifiedDate</label>
+          <div>{{ account.lastModifiedDate }}</div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #null>
+      <p class="text-red-500">This item was not found</p>
+    </ng-template>
+  </api-response>
+</p-card>

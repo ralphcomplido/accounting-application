@@ -23,6 +23,12 @@ namespace LightNap.Core.Data
         public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
 
         /// <summary>
+        /// Gets or sets the table for financial accounts in the system.
+        /// </summary>
+        public DbSet<Account> Accounts { get; set; } = null!;
+
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationDbContext"/> class.
         /// </summary>
         /// <param name="options">The DbContext options.</param>

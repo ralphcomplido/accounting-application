@@ -8,6 +8,7 @@ import { Routes as IdentityRoutes } from "./identity/routes";
 import { Routes as ProfileRoutes } from "./profile/routes";
 import { Routes as PublicRoutes } from "./public/routes";
 import { Routes as HomeRoutes } from "./home/routes";
+import { Routes as AccountRoutes } from "../accounts/components/pages/routes";
 
 export const Routes: AppRoute[] = [
   { path: "", component: PublicLayoutComponent, children: PublicRoutes },
@@ -27,5 +28,6 @@ export const Routes: AppRoute[] = [
     children: [{ path: "", data: { breadcrumb: "Admin" }, children: AdminRoutes }],
   },
   { path: "identity", data: { breadcrumb: "Identity" }, children: IdentityRoutes },
+  { path: "accounts", children: AccountRoutes }
   { path: "**", redirectTo: "/not-found" },
 ];
