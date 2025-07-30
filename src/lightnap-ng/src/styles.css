@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import "primeicons/primeicons.css";
+@import "./assets/layout/layout.css";
+
+@config "../tailwind.config.lightnap.js";
+
+/*
+ * Add style customization here if you want to use Tailwind CSS.
+ */
+a {
+  @apply no-underline;
+  @apply text-primary;
+}
+
+a:hover {
+  @apply underline;
+}
+
+.p-panel-title {
+  @apply text-2xl;
+}
